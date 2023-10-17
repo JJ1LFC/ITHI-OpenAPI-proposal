@@ -1,0 +1,18 @@
+openapi: 3.0.3
+info:
+  title: alt-ITHI-OpenAPI-proposal
+  description: |-
+    Proposal REST API scheme for [ITHI](https://ithi.research.icann.org/index.html) by alt
+  contact:
+    email: alt@jj1lfc.dev
+  license:
+    name: MIT
+    url: https://spdx.org/licenses/MIT.html
+  version: 0.0.1
+externalDocs:
+  description: Find out more about ITHI project
+  url: https://ithi.research.icann.org/index.html
+servers:
+  - url: https://ithi.research.icann.org/api/v1
+paths: 
+  

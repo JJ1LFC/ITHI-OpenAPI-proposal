@@ -1,0 +1,11 @@
+services:
+  swagger:
+    # current stable version v4 image does not support arm (M1 Mac)
+    image: swaggerapi/swagger-editor:next-v5
+    environment:
+      - SWAGGER_YAML='/yaml/openapi3_0.yaml'
+    ports:
+      - 80:80
+    volumes:
+      - ./yaml:/yaml
+
