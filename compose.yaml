@@ -8,4 +8,12 @@ services:
       - 80:80
     volumes:
       - ./yaml:/yaml
-
+  prism:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "prism mock -h 0.0.0.0 /yaml/openapi3_0.yaml"
+    ports:
+      - 4010:4010
+    volumes:
+      - ./yaml:/yaml:ro

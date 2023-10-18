@@ -14,5 +14,8 @@ externalDocs:
   url: https://ithi.research.icann.org/index.html
 servers:
   - url: https://ithi.research.icann.org/api/v1
-paths: 
-  
+    description: Assumed prod server
+  - url: http://localhost:4010/api/v1
+    description: Prism mock server on docker
+
+paths:
