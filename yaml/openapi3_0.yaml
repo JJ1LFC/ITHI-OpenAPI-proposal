@@ -18,4 +18,48 @@ servers:
   - url: http://localhost:4010/api/v1
     description: Prism mock server on docker
 
+tags:
+  - name: M1
+    description: Inaccuracy of Whois Data
+
 paths:
+  /m1:
+    get:
+      description: Returns a list of M1 metrics.
+      tags:
+        - M1
+      deprecated: true
+      responses:
+        200:
+          $ref: "#/components/responses/listMetrics"
+
+components:
+  schemas:
+    availableData:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 1
+          date:
+            type: string
+            format: date
+            example: 2023-10-01
+  responses:
+    listMetrics:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metrics:
+                type: string
+                example: m111
+              endpoint:
+                type: string
+                example: /m1/1/1
+              availableData:
+                $ref: "#/components/schemas/availableData"
