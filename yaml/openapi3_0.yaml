@@ -15,7 +15,7 @@ externalDocs:
 servers:
   - url: https://ithi.research.icann.org/api/v1
     description: Assumed prod server
-  - url: http://localhost:4010/api/v1
+  - url: http://localhost:4010
     description: Prism mock server on docker
 
 tags:
@@ -36,9 +36,88 @@ paths:
           $ref: "#/components/responses/badRequest"
         500:
           $ref: "#/components/responses/internalServerError"
+  /m1/1:
+    get:
+      description: Returns M1.1 metric value of specified date.
+      tags:
+        - M1
+      parameters:
+        - $ref: "#/components/parameters/dateSpecification"
+      deprecated: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/returnedInteger"
+        400:
+          $ref: "#/components/responses/badRequest"
+        500:
+          $ref: "#/components/responses/internalServerError"
+  /m1/2:
+    get:
+      description: Returns M1.2 metric value of specified date.
+      tags:
+        - M1
+      parameters:
+        - $ref: "#/components/parameters/dateSpecification"
+      deprecated: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/returnedInteger"
+        400:
+          $ref: "#/components/responses/badRequest"
+        500:
+          $ref: "#/components/responses/internalServerError"
+  /m1/3:
+    get:
+      description: Returns M1.3 metric value of specified date.
+      tags:
+        - M1
+      parameters:
+        - $ref: "#/components/parameters/dateSpecification"
+      deprecated: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/returnedInteger"
+        400:
+          $ref: "#/components/responses/badRequest"
+        500:
+          $ref: "#/components/responses/internalServerError"
 
 components:
+  parameters:
+    dateSpecification:
+      name: date
+      in: query
+      description: Specify the date. If not specified, the latest value will be returned.
+      required: false
+      schema:
+        type: string
+        format: date
+        example: 2023-10-01
   schemas:
+    returnedInteger:
+      type: array
+      items:
+        type: object
+        properties:
+          date:
+            type: string
+            format: date
+            example: 2023-10-01
+          value:
+            type: integer
+            example: 253
     availableData:
       type: array
       items:
@@ -61,10 +140,10 @@ components:
             properties:
               metrics:
                 type: string
-                example: m111
+                example: m11
               endpoint:
                 type: string
-                example: /m1/1/1
+                example: /m1/1
               availableData:
                 $ref: "#/components/schemas/availableData"
     badRequest:
