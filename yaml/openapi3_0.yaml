@@ -32,6 +32,10 @@ paths:
       responses:
         200:
           $ref: "#/components/responses/listMetrics"
+        400:
+          $ref: "#/components/responses/badRequest"
+        500:
+          $ref: "#/components/responses/internalServerError"
 
 components:
   schemas:
@@ -63,3 +67,7 @@ components:
                 example: /m1/1/1
               availableData:
                 $ref: "#/components/schemas/availableData"
+    badRequest:
+      description: Bad request
+    internalServerError:
+      description: Internal Server Error
