@@ -51,11 +51,7 @@ paths:
       deprecated: true
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -70,11 +66,7 @@ paths:
       deprecated: true
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -89,11 +81,7 @@ paths:
       deprecated: true
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -122,11 +110,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -141,11 +125,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -160,11 +140,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -179,11 +155,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -198,11 +170,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -217,11 +185,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -236,11 +200,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -255,11 +215,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -274,11 +230,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -293,11 +245,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -312,11 +260,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -331,11 +275,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -350,11 +290,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -369,11 +305,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -388,11 +320,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -407,11 +335,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -426,11 +350,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -445,11 +365,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -464,11 +380,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -483,11 +395,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -502,11 +410,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -521,11 +425,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -540,11 +440,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -559,11 +455,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedFloat"
+          $ref: "#/components/responses/returnFloat"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -578,11 +470,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -597,11 +485,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -616,11 +500,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -635,11 +515,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -654,11 +530,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -673,11 +545,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -692,11 +560,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -711,11 +575,7 @@ paths:
       deprecated: false
       responses:
         200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/returnedInteger"
+          $ref: "#/components/responses/returnInteger"
         400:
           $ref: "#/components/responses/badRequest"
         500:
@@ -769,6 +629,18 @@ components:
             example: 2023-10-01
 
   responses:
+    returnInteger:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/returnedInteger"
+    returnFloat:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/returnedFloat"
     listMetrics:
       description: Success
       content:
