@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: https://spdx.org/licenses/MIT.html
-  version: 0.0.1
+  version: 0.1.0
 
 externalDocs:
   description: Find out more about ITHI project
@@ -22,642 +22,96 @@ servers:
     description: Prism mock server on docker
 
 tags:
-  - name: M1
-    description: Inaccuracy of Whois Data
-  - name: M2
-    description: Domain Name Abuse
+  - name: List
+    description: Endpoints that return requested resource list
+  - name: Metric
+    description: Endpoints that return specific metric data corresponds to the query
 
 paths:
-  /m1:
+  /list/resource:
     get:
-      description: Returns a list of M1 metrics.
+      description: |-
+        Returns a list of available resource ID matching query.
+        **This can be used only for Mn.n.n.n-like metrics.**
       tags:
-        - M1
-      deprecated: true
-      responses:
-        200:
-          $ref: "#/components/responses/listMetrics"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m1/1:
-    get:
-      description: Returns M1.1 metric value of specified date.
-      tags:
-        - M1
+        - List
       parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: true
+        - name: metric
+          in: query
+          description: Specify the first class metrics ID (M1-M11, EAI)
+          required: true
+          schema:
+            type: string
+            example: M2
+      deprecated: false
       responses:
         200:
-          $ref: "#/components/responses/returnInteger"
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    metric:
+                      type: string
+                      example: M2.1.1.1
+                    available_data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                            format: date
+                            example: 2023-10-01
         400:
-          $ref: "#/components/responses/badRequest"
+          $ref: '#/components/responses/badRequest'
         500:
-          $ref: "#/components/responses/internalServerError"
-  /m1/2:
-    get:
-      description: Returns M1.2 metric value of specified date.
-      tags:
-        - M1
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: true
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m1/3:
-    get:
-      description: Returns M1.3 metric value of specified date.
-      tags:
-        - M1
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: true
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
+          $ref: '#/components/responses/internalServerError'
 
-  /m2:
+  /metric/value:
     get:
-      description: Returns a list of M2 metrics.
+      description: |-
+        Returns metric value of specified metric and date.
+        **This can be used only for Mn.n.n.n-like metrics.**
       tags:
-        - M2
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/listMetrics"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/1:
-    get:
-      description: Returns M2.1.1 metric value of specified date.
-      tags:
-        - M2
+        - Metric
       parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/2:
-    get:
-      description: Returns M2.1.2 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/3:
-    get:
-      description: Returns M2.1.3 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/4:
-    get:
-      description: Returns M2.1.4 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/1:
-    get:
-      description: Returns M2.2.1 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/2:
-    get:
-      description: Returns M2.2.2 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/3:
-    get:
-      description: Returns M2.2.3 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/4:
-    get:
-      description: Returns M2.2.4 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/1/1:
-    get:
-      description: Returns M2111 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/2/1:
-    get:
-      description: Returns M2121 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/3/1:
-    get:
-      description: Returns M2131 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/4/1:
-    get:
-      description: Returns M2141 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/1/2:
-    get:
-      description: Returns M2112 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/2/2:
-    get:
-      description: Returns M2122 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/3/2:
-    get:
-      description: Returns M2132 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/4/2:
-    get:
-      description: Returns M2142 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/1/3:
-    get:
-      description: Returns M2113 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/2/3:
-    get:
-      description: Returns M2123 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/3/3:
-    get:
-      description: Returns M2133 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/1/4/3:
-    get:
-      description: Returns M2143 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/1/1:
-    get:
-      description: Returns M2211 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/2/1:
-    get:
-      description: Returns M2221 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/3/1:
-    get:
-      description: Returns M2231 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/4/1:
-    get:
-      description: Returns M2241 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnFloat"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/1/2:
-    get:
-      description: Returns M2212 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/2/2:
-    get:
-      description: Returns M2222 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/3/2:
-    get:
-      description: Returns M2232 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/4/2:
-    get:
-      description: Returns M2242 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/1/3:
-    get:
-      description: Returns M2213 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/2/3:
-    get:
-      description: Returns M2223 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/3/3:
-    get:
-      description: Returns M2233 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-  /m2/2/4/3:
-    get:
-      description: Returns M2243 metric value of specified date.
-      tags:
-        - M2
-      parameters:
-        - $ref: "#/components/parameters/dateSpecification"
-      deprecated: false
-      responses:
-        200:
-          $ref: "#/components/responses/returnInteger"
-        400:
-          $ref: "#/components/responses/badRequest"
-        500:
-          $ref: "#/components/responses/internalServerError"
-
-components:
-  parameters:
-    dateSpecification:
-      name: date
-      in: query
-      description: Specify the date. If not specified, the latest value will be returned.
-      required: false
-      schema:
-        type: string
-        format: date
-        example: 2023-10-01
-
-  schemas:
-    returnedInteger:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          example: 2023-10-01
-        value:
-          type: integer
-          example: 253
-    returnedFloat:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          example: 2023-10-01
-        value:
-          type: number
-          format: float
-          example: 4.8
-    availableData:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-            example: 1
-          date:
+        - name: metric
+          in: query
+          description: Specify the metric ID.
+          required: true
+          schema:
+            type: string
+            example: M2.1.1.1
+        - name: date
+          in: query
+          description: Specify the date observed.
+          required: true
+          schema:
             type: string
             format: date
             example: 2023-10-01
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: number
+                    example: 4.79
+        400:
+          $ref: '#/components/responses/badRequest'
+        500:
+          $ref: '#/components/responses/internalServerError'
 
+components:
   responses:
-    returnInteger:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/returnedInteger"
-    returnFloat:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/returnedFloat"
-    listMetrics:
-      description: Success
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              type: object
-              properties:
-                metrics:
-                  type: string
-                  example: m11
-                endpoint:
-                  type: string
-                  example: /m1/1
-                availableData:
-                  $ref: "#/components/schemas/availableData"
     badRequest:
       description: Bad request
     internalServerError:
